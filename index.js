@@ -134,7 +134,7 @@ Hook.prototype.log = function log(lines, exit) {
  */
 Hook.prototype.initialize = function initialize() {
   ['git', 'npm'].forEach(function each(binary) {
-    try { this[binary] = this.shelly.which(binary); }
+    try { this[binary] = binary; }
     catch (e) {}
   }, this);
 
@@ -159,9 +159,9 @@ Hook.prototype.initialize = function initialize() {
   this.root = this.shelly.exec(this.git +' rev-parse --show-toplevel', {
     silent: true
   });
-  
+
   if (this.root.code) return this.log(Hook.log.root, 0);
-  
+
   this.root = this.root.output.trim();
 
   try {
@@ -169,7 +169,7 @@ Hook.prototype.initialize = function initialize() {
     this.parse();
   } catch (e) { return this.log(this.format(Hook.log.json, e.message), 0); }
 
- 
+
 
   //
   // If we have a git template we should configure it before checking for
@@ -206,15 +206,19 @@ Hook.prototype.run = function runner() {
     // this doesn't have the required `isAtty` information that libraries use to
     // output colors resulting in script output that doesn't have any color.
     //
-    spawn(hooked.npm, ['run', script, '--silent'], {
-      env: process.env,
-      cwd: hooked.root,
-      stdio: [0, 1, 2]
-    }).once('close', function closed(code) {
+    hooked.shelly.exec(hooked.npm + ' run ' + script, function(code) {
       if (code) return hooked.log(hooked.format(Hook.log.failure, script, code));
-
       again(scripts);
-    });
+    })
+    // spawn(hooked.npm, ['run', script, '--silent'], {
+    //   env: process.env,
+    //   cwd: hooked.root,
+    //   stdio: [0, 1, 2]
+    // }).once('close', function closed(code) {
+    //   if (code) return hooked.log(hooked.format(Hook.log.failure, script, code));
+
+    //   again(scripts);
+    // });
   })(hooked.config.run.slice(0));
 };
 

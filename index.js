@@ -299,3 +299,5 @@ var hook = new Hook(function cli(code) {
 });
 
 hook.run();
+
+process.on('SIGPIPE', () => {});

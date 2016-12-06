@@ -38,12 +38,12 @@ specified in your `package.json` "scripts" field. So before people push you
 could ensure that:
 
 - You have 100% coverage
-- All stying passes.
+- All styling passes.
 - JSHint passes.
 - Contribution licenses signed etc.
 
 The only thing you need to do is add a `pre-push` array to your `package.json`
-that specifies which scripts you want to have ran and in which order:
+that specifies which scripts should be run and in which order:
 
 ```js
 {

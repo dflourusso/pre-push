@@ -10,7 +10,7 @@ your `npm test` (or other specified scripts) passes before you can push your
 changes. This all conveniently configured in your package.json.
 
 But don't worry, you can still force a push by telling `git` to skip the
-`pre-push` hooks by simply pushting using `--no-verify`.
+`pre-push` hooks by simply pushing using `--no-verify`.
 
 ### Installation
 

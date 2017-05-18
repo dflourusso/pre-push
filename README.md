@@ -1,9 +1,11 @@
 # pre-push
 
-[![Version npm][version]](http://browsenpm.org/package/pre-push)[![Build Status][build]](https://travis-ci.org/observing/pre-push)
 
-[version]: http://img.shields.io/npm/v/pre-push.svg?style=flat-square
-[build]: https://api.travis-ci.org/dflourusso/pre-push.svg?style=flat-square
+<p>
+  <a href="https://www.npmjs.com/package/pre-push"><img src="https://img.shields.io/npm/dm/pre-push.svg" alt="Downloads"></a>
+  <a href="https://www.npmjs.com/package/pre-push"><img src="https://img.shields.io/npm/v/pre-push.svg" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/pre-push"><img src="https://img.shields.io/npm/l/pre-push.svg" alt="License"></a>
+</p>
 
 **pre-push** is a pre-push hook installer for `git`. It will ensure that
 your `npm test` (or other specified scripts) passes before you can push your

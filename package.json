@@ -30,6 +30,8 @@
   "homepage": "https://github.com/dflourusso/pre-push",
   "license": "MIT",
   "dependencies": {
+	"spawn-sync": "^1.0.15",
+	"cross-spawn": "^5.1.0",
     "shelljs": "0.3.x"
   },
   "devDependencies": {

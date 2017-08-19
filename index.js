@@ -171,26 +171,15 @@ Hook.prototype.initialize = function initialize() {
   if (!this.git) return this.log(this.format(Hook.log.binary, 'git'), 0);
 
   this.root = this.exec(this.git, ['rev-parse', '--show-toplevel']);
-  this.status = this.exec(this.git, ['status', '--porcelain']);
 
-  if (this.status.code) return this.log(Hook.log.status, 0);
   if (this.root.code) return this.log(Hook.log.root, 0);
 
-  this.status = this.status.stdout.toString().trim();
   this.root = this.root.stdout.toString().trim();
 
   try {
     this.json = require(path.join(this.root, 'package.json'));
     this.parse();
   } catch (e) { return this.log(this.format(Hook.log.json, e.message), 0); }
-
-  //
-  // We can only check for changes after we've parsed the package.json as it
-  // contains information if we need to suppress the empty message or not.
-  //
-  if (!this.status.length && !this.options.ignorestatus) {
-    return this.log(Hook.log.empty, 0);
-  }
 
   //
   // If we have a git template we should configure it before checking for

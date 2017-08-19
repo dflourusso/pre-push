@@ -156,12 +156,12 @@ Hook.prototype.initialize = function initialize() {
   //
   if (!this.git) return this.log(this.format(Hook.log.binary, 'git'), 0);
 
-  this.root = this.shelly.exec(this.git +' rev-parse --show-toplevel', {
+  this.root = this.shelly.exec('"' + this.git +'" rev-parse --show-toplevel', {
     silent: true
   });
-  
+
   if (this.root.code) return this.log(Hook.log.root, 0);
-  
+
   this.root = this.root.output.trim();
 
   try {
@@ -169,7 +169,7 @@ Hook.prototype.initialize = function initialize() {
     this.parse();
   } catch (e) { return this.log(this.format(Hook.log.json, e.message), 0); }
 
- 
+
 
   //
   // If we have a git template we should configure it before checking for
@@ -177,7 +177,7 @@ Hook.prototype.initialize = function initialize() {
   // execute.
   //
   if (this.config.template) {
-    this.shelly.exec(this.git +' config push.template "'+ this.config.template +'"', {
+    this.shelly.exec('"' + this.git + '" config push.template "'+ this.config.template +'"', {
       silent: true
     });
   }

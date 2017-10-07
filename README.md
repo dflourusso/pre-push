@@ -9,7 +9,7 @@
 
 **pre-push** is a pre-push hook installer for `git`. It will ensure that
 your `npm test` (or other specified scripts) passes before you can push your
-changes. This all conveniently configured in your package.json.
+changes. This all conveniently configured in your `package.json`.
 
 But don't worry, you can still force a push by telling `git` to skip the
 `pre-push` hooks by simply pushing using `--no-verify`.
@@ -32,7 +32,7 @@ the existing `pre-push` file in your `.git/hooks` folder. Existing
 
 `pre-push` will try to run your `npm test` command in the root of the git
 repository by default unless it's the default value that is set by the `npm
-init` script. 
+init` script.
 
 But `pre-push` is not limited to just running your `npm test`'s during the
 push hook. It's also capable of running every other script that you've
@@ -45,7 +45,7 @@ could ensure that:
 - Contribution licenses signed etc.
 
 The only thing you need to do is add a `pre-push` array to your `package.json`
-that specifies which scripts should be run and in which order:
+that specifies which scripts you want to have ran and in which order:
 
 ```js
 {
@@ -96,7 +96,7 @@ The examples above are all the same. In addition to configuring which scripts
 should be ran you can also configure the following options:
 
 - **silent** Don't output the prefixed `pre-push:` messages when things fail
-  or when we have nothing to run. Should a boolean.
+  or when we have nothing to run. Should be a boolean.
 - **colors** Don't output colors when we write messages. Should be a boolean.
 - **template** Path to a file who's content should be used as template for the
   git push body.

@@ -3,7 +3,26 @@
 var fs = require('fs')
   , path = require('path')
   , exists = fs.existsSync || path.existsSync
-  , prepush = path.resolve(__dirname, '../..', '.git', 'hooks', 'pre-push');
+  , root = path.resolve(__dirname, '..', '..')
+  , git = path.resolve(root, '.git');
+
+//
+// Resolve git directory for submodules
+//
+if (exists(git) && fs.lstatSync(git).isFile()) {
+  var gitinfo = fs.readFileSync(git).toString()
+    , gitdirmatch = /gitdir: (.+)/.exec(gitinfo)
+    , gitdir = gitdirmatch.length == 2 ? gitdirmatch[1] : null;
+
+  if (gitdir !== null) {
+    git = path.resolve(root, gitdir);
+  }
+}
+
+//
+// Location of pre-push hook, if it exists
+//
+var prepush = path.resolve(git, 'hooks', 'pre-push');
 
 //
 // Bail out if we don't have pre-push file, it might be removed manually.

@@ -1,6 +1,6 @@
 {
   "name": "pre-push",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Automatically install pre-push hooks for your npm modules.",
   "main": "index.js",
   "scripts": {
@@ -30,14 +30,14 @@
   "homepage": "https://github.com/dflourusso/pre-push",
   "license": "MIT",
   "dependencies": {
-	"spawn-sync": "^1.0.15",
-	"cross-spawn": "^5.1.0",
-    "shelljs": "0.3.x"
+    "cross-spawn": "^5.0.1",
+    "spawn-sync": "^1.0.15",
+    "which": "1.2.x"
   },
   "devDependencies": {
-    "assume": "1.1.x",
-    "istanbul": "0.3.x",
-    "mocha": "2.1.x",
+    "assume": "~1.5.0",
+    "istanbul": "0.4.x",
+    "mocha": "~3.3.0",
     "pre-push": "git://github.com/dflourusso/pre-push.git"
   },
   "bugs": {

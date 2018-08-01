@@ -283,7 +283,7 @@ Hook.log = {
     'hook returned an exit code (%d). If you\'re feeling adventurous you can',
     'skip the git pre-push hooks by adding the following flags to your push:',
     '',
-    '  git push -n (or --no-verify)',
+    '  git push --no-verify',
     '',
     'This is ill-advised since the push is broken.'
   ].join('\n')

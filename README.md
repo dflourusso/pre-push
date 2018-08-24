@@ -24,6 +24,12 @@ module simply run:
 npm install --save-dev pre-push
 ```
 
+or 
+
+```
+yarn add -D pre-push
+```
+
 To install it as `devDependency`. When this module is installed it will override
 the existing `pre-push` file in your `.git/hooks` folder. Existing
 `pre-push` hooks will be backed up as `pre-push.old` in the same repository.

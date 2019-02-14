@@ -216,7 +216,7 @@ Hook.prototype.run = function runner() {
     //
     
     let cmd = process.platform=='win32' ? 'npm.cmd' : 'npm';
-    spawn(cmd, ['run', script, '--silent'], {
+    spawn(cmd, ['run', '--silent'].concat(script.split(/\s+/)), {
       env: process.env,
       cwd: hooked.root,
       stdio: [0, 1, 2]

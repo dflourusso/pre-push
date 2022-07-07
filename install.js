@@ -121,10 +121,10 @@ catch (e) {
   console.error('pre-push:');
 }
 
-try { fs.chmodSync(prepush, '777'); }
+try { fs.chmodSync(prepush, '775'); }
 catch (e) {
   console.error('pre-push:');
-  console.error('pre-push: chmod 0777 the pre-push file in your .git/hooks folder because:');
+  console.error('pre-push: chmod 0775 the pre-push file in your .git/hooks folder because:');
   console.error('pre-push: '+ e.message);
   console.error('pre-push:');
 }

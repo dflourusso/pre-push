@@ -215,7 +215,7 @@ Hook.prototype.run = function runner() {
     // output colors resulting in script output that doesn't have any color.
     //
     
-    let cmd = process.platform=='win32' ? 'npm.cmd' : 'npm';
+    let cmd = process.platform=='win32' ? hooked.npm : 'npm';
     spawn(cmd, ['run', script, '--silent'], {
       env: process.env,
       cwd: hooked.root,

@@ -1,3 +1,9 @@
+## 1.0.4
+- Fix error `Cannot find module` on Windows 10
+
+## 1.0.3
+- Fix file permissions from `777` to `775`
+
 ## 1.0.2
 - Check `/usr/local/bin/node` if we cannot find the binaries in the PATH.
 
